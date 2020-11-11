@@ -8,6 +8,9 @@ namespace DelegadosYEventosG4
         public delegate void DelegadoValidaUsuario();
         public event DelegadoValidaUsuario ValidaUsuario;
 
+        public delegate void DelegadoOperacion(int opcion);
+        public event DelegadoOperacion Operacion;
+
 
         public void MensajeBanco(string Nombre)
         {
@@ -22,6 +25,11 @@ namespace DelegadosYEventosG4
             {
                 Console.WriteLine("El usuario no es válido en el sistema");
                 ValidaUsuario();
+            }else
+            {
+                Console.WriteLine("Proceder a las operaciones siguientes: \n 1)Estado de cuenta \n 2)Retiro de Efectivo ");
+                int opcion = int.Parse(Console.ReadLine());
+                Operacion(opcion);
             }
 
         }
